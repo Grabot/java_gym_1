@@ -7,8 +7,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.function.ToLongFunction;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
@@ -31,12 +36,9 @@ public final class Input {
         }
 
         double dist(@Nonnull Point other) {
-            return Math.sqrt(
-                    Math.pow(this.x - other.x, 2) +
+            return Math.pow(this.x - other.x, 2) +
                             Math.pow(this.y - other.y, 2) +
-                            Math.pow(this.z - other.z, 2)
-
-            );
+                            Math.pow(this.z - other.z, 2);
         }
 
         @Override
@@ -47,6 +49,10 @@ public final class Input {
             return Double.compare(point.x, x) == 0 &&
                     Double.compare(point.y, y) == 0 &&
                     Double.compare(point.z, z) == 0;
+        }
+
+        public String toString() {
+            return "(" + this.x + ";" + this.y + ";" + this.z + ")";
         }
     }
 
